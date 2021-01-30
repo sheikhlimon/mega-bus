@@ -88,7 +88,7 @@
                         <p>Subtotal</p>
                     </div>
                     <div class="right">
-                        <p>$500</p>
+                        <p id="all-ticket-cost">$0</p>
                     </div>
                 </div>
 
@@ -97,7 +97,7 @@
                         <p>Charge 10% VAT</p>
                     </div>
                     <div class="right">
-                        <p>$50</p>
+                        <p id="tax-amount">$0</p>
                     </div>
                 </div>
                 <hr>
@@ -106,7 +106,7 @@
                         <h4>Total</h4>
                     </div>
                     <div class="right">
-                        <p>$550</p>
+                        <p id="grand-total">$00</p>
                     </div>
                 </div>
             </div>
@@ -132,49 +132,29 @@
             if (ticket == 'economy') {
                 bothTicketCost = bothTicketNewQuantity * 100;
             }
+            calculateAllTicketCost();
         }
-        // function economyTicketChange(isIncrease) {
-        //     const economyInput = document.getElementById('economy-quantity');
-        //     const economyQuantity = parseInt(economyInput.value);
-        //     let economyNewQuantity = economyQuantity;
-        //     if (isIncrease == true) {
-        //         economyNewQuantity = economyQuantity + 1;
-        //     } 
-        //     if (isIncrease == false && economyQuantity > 0) {
-        //         economyNewQuantity = economyQuantity - 1;
-        //     }
-        //     economyInput.value = economyNewQuantity;
-        //     const economyCost = economyNewQuantity * 100;
-        // }
 
-        // function handleTicketChange(isIncrease) {
-        //     const firstClassInput = document.getElementById('firstClass-quantity');
-        //     const firstClassQuantity = parseInt(firstClassInput.value);
-        //     let firstClassNewQuantity = firstClassQuantity;
-        //     if (isIncrease == true) {
-        //         firstClassNewQuantity = firstClassQuantity + 1;
-        //     } 
-        //     if (isIncrease == false && firstClassQuantity > 0) {
-        //         firstClassNewQuantity = firstClassQuantity - 1;
-        //     }
-        //     firstClassInput.value = firstClassNewQuantity;
-        //     const firstClassCost = firstClassNewQuantity * 150;
-        // }
-        // document.getElementById('firstClass-increase').addEventListener('click', function() {
-        //     const firstClassInput = document.getElementById('firstClass-quantity');
-        //     const firstClassQuantity = parseInt(firstClassInput.value);
-        //     const firstClassNewQuantity = firstClassQuantity + 1;
-        //     firstClassInput.value = firstClassNewQuantity;
-        //     const firstClassCost = firstClassNewQuantity * 150;
-        // });
+        function calculateAllTicketCost() {
+            const firstClassInput = bothTicketValue('firstClass');
 
-        // document.getElementById('firstClass-decrease').addEventListener('click', function() {
-        //     const firstClassInput = document.getElementById('firstClass-quantity');
-        //     const firstClassQuantity = parseInt(firstClassInput.value);
-        //     const firstClassNewQuantity = firstClassQuantity - 1;
-        //     firstClassInput.value = firstClassNewQuantity;
-        //     const firstClassCost = firstClassNewQuantity * 150;
-        // });
+            const economyInput = bothTicketValue('economy');
+
+            const bothTicketCost = firstClassInput * 150 + economyInput * 100;
+            document.getElementById('all-ticket-cost').innerText = '$' + bothTicketCost;
+
+            const tax = Math.round(bothTicketCost * 0.1);
+            document.getElementById('tax-amount').innerText = '$' + tax;
+
+            const grandTotal = bothTicketCost + tax;
+            document.getElementById('grand-total').innerText = '$' + grandTotal;
+        }
+
+        function bothTicketValue(ticket) {
+            const bothTicketInput = document.getElementById(ticket + '-quantity');
+            const bothTicketQuantity = parseInt(bothTicketInput.value);
+            return bothTicketQuantity;
+        }
     </script>
 </body>
 
