@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +11,6 @@
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
     <!--Header and Menu Section-->
     <header class="container">
@@ -25,36 +23,30 @@
             </ul>
         </nav>
     </header>
-
     <!--Booking Section-->
     <main class="main-content container">
-
         <div class="booking-content">
             <h1>Mega City Bus</h1>
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
                 industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
                 scrambled it to make a type specimen book.</p>
         </div>
-
-
         <div class="booking-form">
             <h3>Explore By Bus</h3>
-
             <div class="inputs">
                 <div class="input-group">
                     <label" for="">From</label>
-                        <input class="inp-style" type="text" name="" placeholder="Dhaka">
+                    <input class="inp-style" type="text" name="" placeholder="Dhaka">
                 </div>
                 <div class="input-group">
                     <label" for="">From</label>
-                        <input class="inp-style" type="text" name="" placeholder="Chittagong">
+                    <input class="inp-style" type="text" name="" placeholder="Chittagong">
                 </div>
             </div>
-
             <div class="inputs">
                 <div class="input-group">
                     <label" for="">Departure</label>
-                        <input class="inp-style" type="date" name="">
+                    <input class="inp-style" type="date" name="">
                 </div>
                 <div class="input-group">
                     <label for="">Return</label>
@@ -82,7 +74,6 @@
                         <button onclick="handleTicketChange('economy', false)" class="btn-style">-</button>
                     </div>
                 </div>
-
             </div>
             <div class="calculations">
                 <div class="amount">
@@ -93,7 +84,6 @@
                         <p id="all-ticket-cost">$0</p>
                     </div>
                 </div>
-
                 <div class="amount">
                     <div class="left">
                         <p>Charge 10% VAT</p>
@@ -116,6 +106,7 @@
         </div>
     </main>
     <script>
+        // First class and economy ticket handler event for changing quantity and price
         function handleTicketChange(ticket, isIncrease) {
             const bothTicketInput = document.getElementById(ticket + '-quantity');
             const bothTicketQuantity = parseInt(bothTicketInput.value);
@@ -136,7 +127,7 @@
             }
             calculateAllTicketCost();
         }
-
+        //calculate all the cost of both tickets first and economy class with tax and add them all
         function calculateAllTicketCost() {
             const firstClassInput = bothTicketValue('firstClass');
 
@@ -151,17 +142,16 @@
             const grandTotal = bothTicketCost + tax;
             document.getElementById('grand-total').innerText = '$' + grandTotal;
         }
-
+        //to find the quantity of both tickets
         function bothTicketValue(ticket) {
             const bothTicketInput = document.getElementById(ticket + '-quantity');
             const bothTicketQuantity = parseInt(bothTicketInput.value);
             return bothTicketQuantity;
         }
-
-        document.getElementById('booked-btn').addEventListener('click', function() {
+        //book now button will show the message below when clicked
+        document.getElementById('booked-btn').addEventListener('click', function () {
             document.getElementById('booked-btn').innerHTML = "SUCCESSFULLY BOOKED!";
         });
     </script>
 </body>
-
 </html>
