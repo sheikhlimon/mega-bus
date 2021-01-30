@@ -31,7 +31,9 @@
 
         <div class="booking-content">
             <h1>Mega City Bus</h1>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                scrambled it to make a type specimen book.</p>
         </div>
 
 
@@ -41,18 +43,18 @@
             <div class="inputs">
                 <div class="input-group">
                     <label" for="">From</label>
-                    <input class="inp-style" type="text" name="" placeholder="Dhaka">
+                        <input class="inp-style" type="text" name="" placeholder="Dhaka">
                 </div>
                 <div class="input-group">
                     <label" for="">From</label>
-                    <input class="inp-style" type="text" name="" placeholder="Chittagone">
+                        <input class="inp-style" type="text" name="" placeholder="Chittagong">
                 </div>
             </div>
 
             <div class="inputs">
                 <div class="input-group">
                     <label" for="">Departure</label>
-                    <input class="inp-style" type="date" name="">
+                        <input class="inp-style" type="date" name="">
                 </div>
                 <div class="input-group">
                     <label for="">Return</label>
@@ -61,15 +63,15 @@
             </div>
             <div class="inputs">
                 <div class="input-group f-class">
-                <div>
-                    <label for="">First Class ($150)</label>
-                    <input id="firstClass-quantity" class="inp-style inp-width" value="0">
+                    <div>
+                        <label for="">First Class ($150)</label>
+                        <input id="firstClass-quantity" class="inp-style inp-width" value="0">
+                    </div>
+                    <div class="plus-minus-btn">
+                        <button onclick="handleTicketChange('firstClass', true)" class="btn-style">+</button>
+                        <button onclick="handleTicketChange('firstClass', false)" class="btn-style">-</button>
+                    </div>
                 </div>
-                <div class="plus-minus-btn">
-                    <button onclick="handleTicketChange('firstClass', true)" class="btn-style">+</button>
-                    <button onclick="handleTicketChange('firstClass', false)" class="btn-style">-</button>
-                </div>
-            </div>
                 <div class="input-group f-class">
                     <div>
                         <label for="">Economy ($100)</label>
@@ -110,7 +112,7 @@
                     </div>
                 </div>
             </div>
-            <button class="btn-style">Book Now</button>
+            <button id="booked-btn" class="btn-style">Book Now</button>
         </div>
     </main>
     <script>
@@ -120,7 +122,7 @@
             let bothTicketNewQuantity = bothTicketQuantity;
             if (isIncrease == true) {
                 bothTicketNewQuantity = bothTicketQuantity + 1;
-            } 
+            }
             if (isIncrease == false && bothTicketQuantity > 0) {
                 bothTicketNewQuantity = bothTicketQuantity - 1;
             }
@@ -155,6 +157,10 @@
             const bothTicketQuantity = parseInt(bothTicketInput.value);
             return bothTicketQuantity;
         }
+
+        document.getElementById('booked-btn').addEventListener('click', function() {
+            document.getElementById('booked-btn').innerHTML = "BOOKED";
+        });
     </script>
 </body>
 
